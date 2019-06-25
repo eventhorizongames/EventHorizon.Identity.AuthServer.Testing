@@ -12,9 +12,8 @@ let smoke () =
         Grants.Index.revokeAccessToSpecificClient "automation-client"
     )
     before(fun _ -> 
-        let theurl = Consent.Index.createConcentUrl "automation-client" "http://localhost:23500/";
-        System.Console.WriteLine(theurl)
-        url (Consent.Index.createConcentUrl "automation-client" "http://localhost:23500/")
+        let theurl = Consent.Index.createConsentUrl "automation-client" "http://localhost:23500/";
+        url (Consent.Index.createConsentUrl "automation-client" "http://localhost:23500/")
     )
 
     "should be on the Consent page" &&& fun _ ->
@@ -28,7 +27,7 @@ let full () =
         Grants.Index.revokeAccessToSpecificClient "automation-client"
     )
     before(fun _ -> 
-        url (Consent.Index.createConcentUrl "automation-client" "http://localhost:23500/")
+        url (Consent.Index.createConsentUrl "automation-client" "http://localhost:23500/")
         pageTitle == "automation-client is requesting your permission"
     )
 

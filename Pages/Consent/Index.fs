@@ -14,7 +14,7 @@ let private state = "fe737009777944db9de80baf370105a1"
 let private codeChallenge = "_ubt4YbQ-7qU1tho4STnaDAG6RcRbKphIt3SH4mwq5c"
 let private codeChallengeMethod = "S256"
 
-let createConcentUrl clientId redirectUri = 
+let createConsentUrl clientId redirectUri = 
     [
         authroizeUrl; 
         "?client_id="; clientId;
@@ -28,8 +28,10 @@ let createConcentUrl clientId redirectUri =
     |> String.concat ""
 
 let navigateToConsentPage clientId redirectUri =
-    url (createConcentUrl clientId redirectUri)
-
+    createConsentUrl clientId redirectUri 
+    |> fun consentUrl -> 
+        System.Console.WriteLine consentUrl
+        url consentUrl
 
 
 let pageTitle = ".page-title"
@@ -57,3 +59,11 @@ let rememberDecisionLabel = "label:has(#RememberConsent)"
 let clientUrl = "#client-url"
 let clientUrlByHref href = "#client-url[href=\"" + href + "\"]"
 
+let acceptConsentToClient clientId redirectUrl =
+    navigateToConsentPage clientId redirectUrl
+    try 
+        elementWithText yesAllowAccess "Yes" |> ignore;
+        printfn "Client Consent page found, Allowing Access."
+        click yesAllowAccess
+    with   
+        | _ -> printfn "Client Consent could have already been given..."   

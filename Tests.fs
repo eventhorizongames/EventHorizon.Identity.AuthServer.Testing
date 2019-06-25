@@ -40,10 +40,16 @@ let all =
 
     Actions, Smoke, Consent.Actions.smoke
     Actions, Full, Consent.Actions.full
-    // Actions, Edge, Consent.Actions.edge
 
     Assertions, Smoke, Consent.Assertions.smoke
     Assertions, Full, Consent.Assertions.full
+
+
+    Actions, Smoke, Grants.Actions.smoke
+    Actions, Full, Grants.Actions.full
+
+    Assertions, Smoke, Grants.Assertions.smoke
+    Assertions, Full, Grants.Assertions.full
   ]
   
 //Code below does not need to be changed in most cases, it simply takes all of the tests and removes ones that dont
