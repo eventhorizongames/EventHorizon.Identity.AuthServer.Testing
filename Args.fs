@@ -13,7 +13,7 @@ type private CLIArguments =
         match s with
         | Browser _ -> "specicfy a browser (Chrome Firefox IE)."
         | Tag _ -> "specify tag (All Misc etc)."
-        | TestType _ -> "specify testType (All Smoke Full UnderDevelopment)."
+        | TestType _ -> "specify testType (All Smoke Edge Full UnderDevelopment) Default: Smoke."
 
 let parse cliargs =
   let parser = ArgumentParser.Create<CLIArguments>(errorHandler=ProcessExiter())

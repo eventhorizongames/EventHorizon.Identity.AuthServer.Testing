@@ -6,8 +6,7 @@ open Common
 //This lets you simply comment/uncomment the test context/suite that you are working on
 //As you add more tests for different pages, add an entry here
 let underDevelopment () =
-  Consent.Assertions.all()
-  Consent.Actions.all()
+  Manage.Actions.edge()
 
 //This is a list of all tests, which is useful when running in a CI environment where you want to
 //run all tests, or a specific type of test like Full/Smoke, or tests for a specific
@@ -36,6 +35,7 @@ let all =
 
     Assertions, Smoke, Manage.Assertions.smoke
     Assertions, Full, Manage.Assertions.full
+    Assertions, Edge, Manage.Assertions.edge
 
 
     Actions, Smoke, Consent.Actions.smoke
@@ -50,6 +50,13 @@ let all =
 
     Assertions, Smoke, Grants.Assertions.smoke
     Assertions, Full, Grants.Assertions.full
+
+
+    Actions, Smoke, Register.Actions.smoke
+    Actions, Full, Register.Actions.full
+
+    Assertions, Smoke, Register.Assertions.smoke
+    Assertions, Full, Register.Assertions.full
   ]
   
 //Code below does not need to be changed in most cases, it simply takes all of the tests and removes ones that dont

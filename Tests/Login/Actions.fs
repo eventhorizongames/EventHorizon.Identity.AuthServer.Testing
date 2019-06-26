@@ -15,7 +15,7 @@ let smoke () =
         username << EnvProps.username
         password << EnvProps.password
         click submitButton
-        Home.Index.homePageTitle == "Welcome to EventHorizon Game Studio Identity"
+        Home.Index.pageTitle == "Welcome to EventHorizon Game Studio Identity"
 
 let full () =
     context "full Login actions"
@@ -26,7 +26,7 @@ let full () =
 
     "should land on home page when login is successful" &&& fun _ -> 
         Login.Flow.loginToApplication EnvProps.username EnvProps.password
-        Home.Index.homePageTitle == "Welcome to EventHorizon Game Studio Identity"
+        Home.Index.pageTitle == "Welcome to EventHorizon Game Studio Identity"
 
     "should show error message on login page when username is invalid login" &&& fun _ -> 
         Login.Flow.loginToApplication "invalid username" EnvProps.password
@@ -46,11 +46,11 @@ let full () =
         
     "should navigate to Home page on cancel button click" &&& fun _ -> 
         click cancelButton
-        Home.Index.homePageTitle == "Welcome to EventHorizon Game Studio Identity"
+        Home.Index.pageTitle == "Welcome to EventHorizon Game Studio Identity"
         
     "should navigate to Registration page on register as new user link click" &&& fun _ -> 
         click registerNewUserLink
-        Register.Index.pageTitleElement == Register.Index.pageTitle
+        Register.Index.pageTitle == Register.Index.pageTitleText
 
     "clearing #username sets text to new empty string via IWebElement" &&& fun _ ->
         element username |> clear

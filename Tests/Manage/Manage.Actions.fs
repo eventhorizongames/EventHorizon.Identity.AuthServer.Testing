@@ -101,10 +101,29 @@ let full () =
         confirmNewPassword << "newConfirmPassword" 
         confirmNewPassword == "newConfirmPassword" 
 
+
+
 let edge () =
     context "edge Manage Actions"
 
     "on missing password should see set password page" &&& todo
+
+    "should pruge account when confirmed by a user" &&& fun _ ->
+        // Regiser new account
+        let email = Register.Index.createTestEmail()
+        let password = Register.Index.createValidPassword()
+        Register.Index.registerNewAccount email password
+        // Navigate to Manage account
+        url Manage.Index.uri
+        // Validate we are on the Manage uri home page
+        Manage.Index.email == email
+        // Click on Purge Account
+        click purgeAccount
+        // Click on Purge Account Confirm 
+        click purgeAccountConfirm
+        // Validate they are on the Home page
+        Home.Index.pageTitle == Home.Index.pageTitleText
+
 
 
 let all () =

@@ -16,7 +16,7 @@ let full () =
   before (fun _ -> url Home.Index.uri)
 
   ".home-page-title should have Welcome to EventHorizon Game Studio Identity" &&& fun _ ->
-    homePageTitle == "Welcome to EventHorizon Game Studio Identity"
+    pageTitle == pageTitleText
 
 
 

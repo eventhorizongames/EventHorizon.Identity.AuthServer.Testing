@@ -42,6 +42,11 @@ let grantsPageTitle = "#page-title"
 // Diagnostics Selectors
 let diagnosticsPageTitle = "#page-title"
 
+// Purge Account Selector
+let purgeAccount = "#purge-account"
+let purgeAccountConfirm = "#purge-account-form #confirm"
+let purgeAccountBack = "#purge-account-form #back"
+
 
 let resetAccountProfile () =
     // Reset the logged in account

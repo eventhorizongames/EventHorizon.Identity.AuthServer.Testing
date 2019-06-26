@@ -27,9 +27,6 @@ let full () =
     "should have a way to create new clients" &&& fun _ ->
         pageTitle == "Clients"
         createNewClient == "Create"
-        
-
-
 
 let all () =
   smoke()

@@ -4,4 +4,5 @@ let uri = EnvProps.baseUri + "/"
 
 //selectors
 let navBarTitle = ".navbar-brand"
-let homePageTitle = "#home-page-title"
+let pageTitle = "#home-page-title"
+let pageTitleText = "Welcome to EventHorizon Game Studio Identity"
