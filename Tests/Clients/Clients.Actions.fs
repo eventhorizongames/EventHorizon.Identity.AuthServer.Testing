@@ -34,6 +34,12 @@ let full () =
         Clients.Create.clientName << clientName
         click Clients.Create.createClient
 
+    let deleteClient clientId =
+        Clients.Delete.clientDeleteUri clientId
+        |> url
+        click Clients.Delete.confirmDelete
+        pageTitle == "Clients"
+
     "should create new client and list on index page" &&& fun _ ->
         // Create new client
         let guid = System.Guid.NewGuid().ToString()
@@ -44,6 +50,7 @@ let full () =
         pageTitle == "Clients"
         // Make sure Created Clients is listed on page
         clientDispalyElement clientIdGuid == clientNameGuid + " (" + clientIdGuid + ")"
+        deleteClient clientIdGuid
 
     "should new create clients with Edit link" &&&  fun _ ->
         // Create new client
@@ -55,6 +62,7 @@ let full () =
         pageTitle == "Clients"
         // Make sure Created Clients is listed on page
         editClientLink clientIdGuid == "Edit"
+        deleteClient clientIdGuid
 
     "should new create clients with Delete link" &&& fun _ ->
         // Create new client
@@ -66,6 +74,7 @@ let full () =
         pageTitle == "Clients"
         // Make sure Created Clients is listed on page
         deleteClientLink clientIdGuid == "Delete"
+        deleteClient clientIdGuid
 
     "should delete clients when Delete link is clicked" &&& fun _ ->
         // Create new client
@@ -78,8 +87,9 @@ let full () =
         // Make sure Created Clients is listed on page
         deleteClientLink clientIdGuid
         |> click
-        Clients.Delete.pageTitle == "Delete Client"
-        Clients.Delete.pageDescription == "Are you sure you want to delete the client, " + clientNameGuid + "?"
+        Clients.Delete.pageTitle == "Delete Client - " + clientNameGuid
+        Clients.Delete.pageDescription == "Are you sure you want to delete this client?"
+        Clients.Delete.deleteActionAlert == "This action cannot be undone."
         click Clients.Delete.confirmDelete
 
     "should navigate to edit client page when Edit link is clicked" &&& fun _ ->
@@ -95,6 +105,7 @@ let full () =
         |> click
         // Validate on Client Edit page
         Clients.Edit.pageTitle == clientNameGuid + " (" + clientIdGuid + ")"
+        deleteClient clientIdGuid
 
 let all () =
   smoke()
