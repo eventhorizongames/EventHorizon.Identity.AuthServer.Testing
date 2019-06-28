@@ -10,9 +10,9 @@ let pageTitle = "#page-title"
 let pageTitleText = "Register"
 let pageDescription = "#page-description"
 
-let email = "#Email"
-let password = "#Password"
-let confirmPassword = "#ConfirmPassword"
+let email = "#UserRegistration_Email"
+let password = "#UserRegistration_Password"
+let confirmPassword = "#UserRegistration_ConfirmPassword"
 
 let registerSumbmit = ".registration-form #submit"
 

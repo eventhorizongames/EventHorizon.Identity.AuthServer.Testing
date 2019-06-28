@@ -8,6 +8,7 @@
     <Compile Include="EnvProps.fs" />
     <Compile Include="Args.fs" />
     <Compile Include="Pages/**/*.fs" />
+    <Compile Include="Flows/**/*.fs" />
     <Compile Include="Tests/**/*.fs" />
     <Compile Include="Tests.fs" />
     <Compile Include="Program.fs" />

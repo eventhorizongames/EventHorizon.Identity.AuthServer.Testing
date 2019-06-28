@@ -7,7 +7,7 @@ open Register.Index
 let smoke () =
     context "smoke Register actions"
     once (fun _ -> 
-        Logout.Flow.logoutOfApplication ()
+        Logout.Flows.logoutOfApplication ()
         url Register.Index.uri
     )
 
@@ -20,7 +20,7 @@ let smoke () =
 let full () =
     context "full Register actions"
     once (fun _ -> 
-        Logout.Flow.logoutOfApplication ()
+        Logout.Flows.logoutOfApplication ()
         url Register.Index.uri
     )
 
@@ -33,7 +33,7 @@ let full () =
         click registerSumbmit
         url Manage.Index.uri
         Manage.Index.email == testEmail
-        Manage.Flow.purgeCurrentAccount
+        Manage.Flows.purgeCurrentAccount
 
 
 let all () =

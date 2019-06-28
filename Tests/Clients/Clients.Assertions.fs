@@ -7,8 +7,8 @@ open Clients.Index
 let smoke () =
     context "smoke Clients.Index Assertions"
     before (fun _ -> 
-        Logout.Flow.logoutOfApplication()
-        Login.Flow.loginToApplication EnvProps.username EnvProps.password
+        Logout.Flows.logoutOfApplication()
+        Login.Flows.loginToApplication EnvProps.username EnvProps.password
         url Clients.Index.uri 
     )
 
@@ -19,8 +19,8 @@ let smoke () =
 let full () =
     context "full Clients.Index assertions"
     before (fun _ -> 
-        Logout.Flow.logoutOfApplication()
-        Login.Flow.loginToApplication EnvProps.username EnvProps.password
+        Logout.Flows.logoutOfApplication()
+        Login.Flows.loginToApplication EnvProps.username EnvProps.password
         url Clients.Index.uri 
     )
 

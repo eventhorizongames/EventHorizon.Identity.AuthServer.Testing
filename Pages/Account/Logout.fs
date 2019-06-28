@@ -1,5 +1,6 @@
-module Logout.Index
+module Account.Logout
 
+// /Account/Logout
 let uri = EnvProps.baseUri + "/Account/Logout"
 
 // selectors

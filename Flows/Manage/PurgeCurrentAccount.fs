@@ -1,13 +1,14 @@
-module Manage.Flow
+module Manage.Flows
 
 open canopy.classic
+open Manage.Index
 
 let purgeCurrentAccount = 
     // Navigate to Manage account
-    url Manage.Index.uri
+    url uri
     // Make sure that the user bing purged is not the EnvProps.username
-    Manage.Index.email != EnvProps.username
+    email != EnvProps.username
     // Click on Purge Account
-    click Manage.Index.purgeAccount
+    click purgeAccount
     // Click on Purge Account Confirm 
-    click Manage.Index.purgeAccountConfirm
+    click purgeAccountConfirm

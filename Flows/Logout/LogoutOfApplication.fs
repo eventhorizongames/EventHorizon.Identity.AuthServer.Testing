@@ -1,13 +1,12 @@
-module Logout.Flow
+module Logout.Flows
 
 open canopy.classic
-open Logout.Index
 
 let logoutOfApplication () =
-    url Logout.Index.uri
+    url Account.Logout.uri
     try 
-        elementWithText submitButton "Yes" |> ignore;
+        elementWithText Account.Logout.submitButton "Yes" |> ignore;
         printfn "User was found, logging out."
-        click submitButton
+        click Account.Logout.submitButton
     with
         | _ -> printfn "No user logged in."

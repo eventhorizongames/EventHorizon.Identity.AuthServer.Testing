@@ -7,8 +7,8 @@ open Consent.Index
 let smoke () =
     context "smoke Consent actions"
     once (fun _ -> 
-        Logout.Flow.logoutOfApplication ()
-        Login.Flow.loginToApplication EnvProps.username EnvProps.password
+        Logout.Flows.logoutOfApplication ()
+        Login.Flows.loginToApplication EnvProps.username EnvProps.password
         Grants.Index.revokeAccessToSpecificClient "automation-client"
     )
     before(fun _ -> 
@@ -22,8 +22,8 @@ let smoke () =
 let full () =
     context "full Consent actions"
     once (fun _ -> 
-        Logout.Flow.logoutOfApplication ()
-        Login.Flow.loginToApplication EnvProps.username EnvProps.password
+        Logout.Flows.logoutOfApplication ()
+        Login.Flows.loginToApplication EnvProps.username EnvProps.password
         Grants.Index.revokeAccessToSpecificClient "automation-client"
     )
     before(fun _ -> 

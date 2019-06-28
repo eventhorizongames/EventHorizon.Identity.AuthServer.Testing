@@ -7,8 +7,8 @@ open Clients.Index
 let smoke () =
     context "smoke Clients Index actions"
     once (fun _ -> 
-        Logout.Flow.logoutOfApplication ()
-        Login.Flow.loginToApplication EnvProps.username EnvProps.password
+        Logout.Flows.logoutOfApplication ()
+        Login.Flows.loginToApplication EnvProps.username EnvProps.password
     )
     before(fun _ -> 
         url Clients.Index.uri 
@@ -20,8 +20,8 @@ let smoke () =
 let full () =
     context "full Login Index actions"
     once (fun _ -> 
-        Logout.Flow.logoutOfApplication ()
-        Login.Flow.loginToApplication EnvProps.username EnvProps.password
+        Logout.Flows.logoutOfApplication ()
+        Login.Flows.loginToApplication EnvProps.username EnvProps.password
     )
     before(fun _ -> 
         url Clients.Index.uri 
@@ -78,6 +78,9 @@ let full () =
         // Make sure Created Clients is listed on page
         deleteClientLink clientIdGuid
         |> click
+        Clients.Delete.pageTitle == "Delete Client"
+        Clients.Delete.pageDescription == "Are you sure you want to delete the client, " + clientNameGuid + "?"
+        click Clients.Delete.confirmDelete
 
     "should navigate to edit client page when Edit link is clicked" &&& fun _ ->
         // Create new client

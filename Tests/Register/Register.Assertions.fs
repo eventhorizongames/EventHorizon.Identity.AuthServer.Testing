@@ -7,7 +7,7 @@ open Register.Index
 let smoke () =
     context "smoke Register Assertions"
     once (fun _ -> 
-        Logout.Flow.logoutOfApplication ()
+        Logout.Flows.logoutOfApplication ()
         url Register.Index.uri
     )
 
@@ -16,7 +16,7 @@ let smoke () =
 let full () =
     context "full Register Assertions"
     once (fun _ -> 
-        Logout.Flow.logoutOfApplication ()
+        Logout.Flows.logoutOfApplication ()
         url Register.Index.uri
     )
 
