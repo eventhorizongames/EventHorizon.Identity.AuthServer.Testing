@@ -6,8 +6,6 @@ open canopy.classic
 // https://localhost:23501/connect/authorize?client_id=overlay-client&redirect_uri=&response_type=code&scope=openid%20profile%20api1%20roles&state=fe737009777944db9de80baf370105a1&code_challenge=_ubt4YbQ-7qU1tho4STnaDAG6RcRbKphIt3SH4mwq5c&code_challenge_method=S256
 
 let private authroizeUrl = EnvProps.baseUri + "/connect/authorize"
-let private clientId = "automation-client"
-let private redirectUri = "http://localhost:23500"
 let private responseType = "code"
 let private scope = "openid profile api1 roles"
 let private state = "fe737009777944db9de80baf370105a1"

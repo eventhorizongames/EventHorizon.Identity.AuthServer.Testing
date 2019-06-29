@@ -9,24 +9,24 @@ let smoke () =
     once (fun _ -> 
         Logout.Flows.logoutOfApplication ()
         Login.Flows.loginToApplication EnvProps.username EnvProps.password
-        Grants.Index.revokeAccessToSpecificClient "automation-client"
-        Consent.Index.navigateToConsentPage "automation-client" "http://localhost:23500/"
+        Grants.Index.revokeAccessToSpecificClient EnvProps.clientId
+        Consent.Index.navigateToConsentPage EnvProps.clientId EnvProps.redirectUri
     )
 
     "should be on the Consent page" &&& fun _ ->
-        pageTitle == "automation-client is requesting your permission"
+        pageTitle == EnvProps.clientId + " is requesting your permission"
 
 let full () =
     context "full Consent Assertions"
     once (fun _ -> 
         Logout.Flows.logoutOfApplication ()
         Login.Flows.loginToApplication EnvProps.username EnvProps.password
-        Grants.Index.revokeAccessToSpecificClient "automation-client"
-        Consent.Index.navigateToConsentPage "automation-client" "http://localhost:23500/"
+        Grants.Index.revokeAccessToSpecificClient EnvProps.clientId
+        Consent.Index.navigateToConsentPage EnvProps.clientId EnvProps.redirectUri
     )
 
     "page title should contain information about client" &&& fun _ ->
-        pageTitle == "automation-client is requesting your permission"
+        pageTitle == EnvProps.clientId + " is requesting your permission"
 
     "should contain a description" &&& fun _ ->
         pageDescription == "Uncheck the permissions you do not wish to grant."
@@ -79,12 +79,12 @@ let full () =
     "should default checkbox Remember My Decision to selected" &&& fun _ ->
         selected rememberDecisionCheckbox
 
-    "should contain a link to the clients url" &&& fun _ ->
-        clientUrl == "automation-client"
+    "should contain a link to the clients url" &&! fun _ ->
+        clientUrl == EnvProps.clientId
 
-    "should contain a link to the clients url" &&& fun _ ->
+    "should contain a link to the clients url" &&! fun _ ->
         // Note that the href for this client will be ssl
-        clientUrlByHref "https://localhost:23501" == "automation-client"
+        clientUrlByHref EnvProps.baseUri == EnvProps.clientId
 
 
 let all () =

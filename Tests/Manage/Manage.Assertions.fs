@@ -72,7 +72,7 @@ let full () =
         click grantsNav
         grantsPageTitle == "Client Application Access"
 
-    "should navigate to diagnostics page when diagnostics nav click" &&& fun _ ->
+    "should navigate to diagnostics page when diagnostics nav click" &&! fun _ ->
         click diagnosticsNav
         diagnosticsPageTitle == "Authentication cookie"
 
