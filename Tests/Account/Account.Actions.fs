@@ -11,7 +11,7 @@ let smoke () =
     )
 
     "submit form" &&& fun _ ->
-        Account.Login.username << EnvProps.username
+        Account.Login.email << EnvProps.username
         Account.Login.password << EnvProps.password
         click Account.Login.submitButton
         Home.Index.pageTitle == "Welcome to EventHorizon Game Studio Identity"
@@ -29,7 +29,7 @@ let full () =
 
     "should show error message on login page when username is invalid email" &&& fun _ -> 
         Login.Flows.loginToApplication "invalid username" EnvProps.password
-        Account.Login.usernameError == "The Email field is not a valid e-mail address."
+        Account.Login.emailError == "The Email field is not a valid e-mail address."
         
     "should show error message on login page when password is invalid" &&& fun _ -> 
         Login.Flows.loginToApplication EnvProps.username "invalid password"
@@ -41,11 +41,11 @@ let full () =
         
     "should show Email error message when username is empty" &&& fun _ -> 
         Login.Flows.loginToApplication "" "not empty"
-        Account.Login.usernameError == "The Email field is required."
+        Account.Login.emailError == "The Email field is required."
         
     "should show Email and Password error message when both are empty" &&& fun _ -> 
         Login.Flows.loginToApplication "" ""
-        Account.Login.usernameErrorByInput == "The Email field is required."
+        Account.Login.emailErrorByInput == "The Email field is required."
         Account.Login.passwordErrorByInput == "The Password field is required."
         
     "should navigate to Home page on cancel button click" &&& fun _ -> 
@@ -57,8 +57,8 @@ let full () =
         Register.Index.pageTitle == Register.Index.pageTitleText
 
     "clearing #username sets text to new empty string via IWebElement" &&& fun _ ->
-        element Account.Login.username |> clear
-        Account.Login.username == ""
+        element Account.Login.email |> clear
+        Account.Login.email == ""
 
 let all () =
     smoke()

@@ -22,7 +22,7 @@ let full () =
     )
 
     "should have an email label" &&& fun _ ->
-        usernameLabel == "Email"
+        emailLabel == "Email"
 
 
 let all () =
