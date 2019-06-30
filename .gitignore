@@ -243,5 +243,7 @@ msbuild.binlog
 /fcs/FSharp.Compiler.Service.netstandard/*.fsi
 
 global.json
+TestingProps.*.json
 TestingProps.json
 *.fs.ignore
+.ionide/symbolCache.db

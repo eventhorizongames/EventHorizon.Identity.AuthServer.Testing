@@ -6,7 +6,7 @@ open Common
 //This lets you simply comment/uncomment the test context/suite that you are working on
 //As you add more tests for different pages, add an entry here
 let underDevelopment () =
-  Clients.Actions.all()
+  Register.Actions.full()
 
 //This is a list of all tests, which is useful when running in a CI environment where you want to
 //run all tests, or a specific type of test like Full/Smoke, or tests for a specific

@@ -18,6 +18,7 @@ let registerSumbmit = ".registration-form #submit"
 
 let createTestEmail () = 
     [
+        EnvProps.testDomainPrefix;
         "automation-account_";
         Guid.NewGuid().ToString();
         "@";

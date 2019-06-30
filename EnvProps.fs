@@ -9,7 +9,8 @@ type TestingProps() =
         member val BaseUri : string = "http://localhost:23500" with get, set
         member val Username : string = "test@user.ehz" with get, set
         member val Password : string = "Password1!" with get, set
-        member val TestDomain : string = "email.ehzgames.studio" with get, set
+        member val TestDomain : string = "ehzgames.studio" with get, set
+        member val TestDomainPrefix : string = "mail+" with get, set
         member val ClientId : string = "automation-client" with get, set
         member val RedirectUri : string = "http://localhost:23500" with get, set
     end     
@@ -30,5 +31,6 @@ let baseUri = testingProps.BaseUri
 let username = testingProps.Username
 let password = testingProps.Password
 let testDomain = testingProps.TestDomain
+let testDomainPrefix = testingProps.TestDomainPrefix
 let clientId = testingProps.ClientId
 let redirectUri = testingProps.RedirectUri
