@@ -14,7 +14,7 @@ open System
 
 [<EntryPoint>]
 let main argv =
-    //Parse all the args into the types that we use in the rest of the code
+    // Parse all the args into the types that we use in the rest of the code
     let args = Args.parse argv
 
     Console.WriteLine (executingDir())
@@ -25,19 +25,19 @@ let main argv =
     // reporter <- LiveHtmlReporter(Chrome, configuration.chromeDir) :> IReporter
     // reporter.setEnvironment "EventHorizon.Identity.AuthServer.Testing"
 
-    //Start the browser supplied in args
+    // Start the browser supplied in args
     start args.Browser
 
-    //Register the tests that you want to run (under development, a specific page, all tests, etc)
+    // Register the tests that you want to run (under development, a specific page, all tests, etc)
     Tests.register args.Tag args.TestType
-    //Run tests
+    // Run tests
     run()
 
-    // Removed Pased after run, not needed since report is printed to console. See Disabled Browser Reporting
-    printfn "press [any key] to exit"
-    System.Console.ReadKey() |> ignore
-    //Quit all browsers
+    if runner.classic.failedCount > 0 then
+        printfn "press [any key] to exit"
+        System.Console.ReadKey() |> ignore
+
     quit ()
 
-    //return code
+    // return code
     runner.classic.failedCount
