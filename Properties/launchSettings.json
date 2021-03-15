@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "EventHorizon.Identity.AuthServer.Testing": {
-      "commandName": "Project",
-      "commandLineArgs": "--testtype All"
-    }
-  }
-}

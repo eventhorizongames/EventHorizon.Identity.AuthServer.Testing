@@ -1,0 +1,30 @@
+{
+    "baseUri": "https://localhost:23501",
+    "emailDomain": "ehzgames.studio",
+    "emailDomainPrefix": "mail+",
+    "defaultPassword": "Password1!",
+    "defaultAdminUser": {
+        "email": "test@user.ehz",
+        "username": "test@user.ehz",
+        "firstName": "Test",
+        "lastName": "User",
+        "password": "Password1!"
+    },
+    "clientId": "automation-client",
+    "redirectUri": "https://localhost:23501/",
+    "webHost": {
+        "baseUrl": "https://localhost:23501/",
+        "culture": "en-US",
+        "driver": {
+            "type": "edge-chromium",
+            "options": {
+                "arguments": [
+                    "headless",
+                    "disable-gpu",
+                    "window-size=1920,1080",
+                    "start-maximized"
+                ]
+            }
+        }
+    }
+}
