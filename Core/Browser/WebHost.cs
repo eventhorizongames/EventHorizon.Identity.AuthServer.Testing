@@ -2,14 +2,15 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     using Atata;
+    using Atata.WebDriverSetup;
 
     using EventHorizon.Identity.AuthServer.Testing.Core.Browser.Api;
     using EventHorizon.Identity.AuthServer.Testing.Core.Browser.Model;
     using EventHorizon.Identity.AuthServer.Testing.Core.Config;
     using EventHorizon.Identity.AuthServer.Testing.Layout;
-    using EventHorizon.Identity.AuthServer.Testing.Models;
 
     using Microsoft.Edge.SeleniumTools;
     using Microsoft.Extensions.Configuration;
@@ -77,7 +78,7 @@
 
         public AutomationWebHostFixture()
         {
-            AtataContext.Configure()
+            AtataContext.GlobalConfiguration
                 .UseBaseUrl(
                     Settings.BaseUrl
                 ).UseCulture(
@@ -85,13 +86,13 @@
                 ).UseDriver(
                     () =>
                     {
-                        EdgeOptions options = new EdgeOptions
+                        EdgeOptions options = new()
                         {
                             UseChromium = true,
                             LeaveBrowserRunning = true,
                         };
 
-                        foreach (var argument in Settings.Driver.Options.Arguments)
+                        foreach (var argument in Settings.Driver.Options.Arguments.Where(a => !string.IsNullOrWhiteSpace(a)))
                         {
                             options.AddArgument(
                                 argument
@@ -103,7 +104,9 @@
                             options
                         );
                     }
-                ).Build();
+                );
+            DriverSetup.AutoSetUp("Edge");
+            AtataContext.Configure().Build();
         }
 
         public void Dispose()

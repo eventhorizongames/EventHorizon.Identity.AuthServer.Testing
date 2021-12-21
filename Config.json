@@ -1,5 +1,5 @@
 {
-    "baseUri": "https://localhost:23501",
+    "baseUri": "https://localhost:5001",
     "emailDomain": "ehzgames.studio",
     "emailDomainPrefix": "mail+",
     "defaultPassword": "Password1!",
@@ -11,9 +11,9 @@
         "password": "Password1!"
     },
     "clientId": "automation-client",
-    "redirectUri": "https://localhost:23501/",
+    "redirectUri": "https://localhost:5001/",
     "webHost": {
-        "baseUrl": "https://localhost:23501/",
+        "baseUrl": "https://localhost:5001/",
         "culture": "en-US",
         "driver": {
             "type": "edge-chromium",

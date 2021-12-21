@@ -42,7 +42,7 @@
                         item.ApiGrantTypesLabel.Should.Equal("API Grants");
                         var content = item.ApiGrantTypes[0].Label.Content;
                         item.ApiGrantTypes[0].Label.Should.Equal("Email");
-                        item.ApiGrantTypes[1].Label.Should.Equal("Role");
+                        item.ApiGrantTypes[1].Label.Should.Equal("Roles");
                     })
             ;
         }
